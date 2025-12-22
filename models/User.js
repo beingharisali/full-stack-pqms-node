@@ -51,7 +51,7 @@ const UserSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, "Please provide name"],
-    maxlength: 50,
+    maxlength: 100,
     minlength: 3,
   },
   email: {
@@ -70,7 +70,7 @@ const UserSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    enum: ["user", "manager", "admin"],
+    enum: ["user", "manager", "admin", "doctor"],
     default: "user",
   },
 });
@@ -85,7 +85,7 @@ UserSchema.methods.createJWT = function () {
   return jwt.sign(
     { userId: this._id, name: this.name, role: this.role },
     process.env.JWT_SECRET,
-    { expiresIn: process.env.JWT_LIFETIME }
+    { expiresIn: process.env.JWT_LIFETIME || "1d" }
   );
 };
 
