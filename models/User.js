@@ -73,6 +73,12 @@ const UserSchema = new mongoose.Schema({
     enum: ["user", "manager", "admin", "doctor"],
     default: "user",
   },
+  appointments: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Appointment",
+    },
+  ],
 });
 
 UserSchema.pre("save", async function () {
