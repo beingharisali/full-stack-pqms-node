@@ -61,9 +61,10 @@ const rateLimiter = require("express-rate-limit");
 const connectDB = require("./db/connect");
 
 const authRouter = require("./routes/auth");
-
+const doctorRouter = require("./routes/doctorRoutes.js");
 const notFoundMiddleware = require("./middleware/not-found");
 const errorHandlerMiddleware = require("./middleware/error-handler");
+const patientRouter = require("./routes/patientRoutes.js");
 
 app.use(cors());
 app.use(express.json());
@@ -78,6 +79,8 @@ app.use(
 app.use(helmet());
 
 app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/doctors", doctorRouter);
+app.use("/api/v1/patients", patientRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
