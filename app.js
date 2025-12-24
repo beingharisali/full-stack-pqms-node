@@ -64,11 +64,12 @@ const authRouter = require("./routes/auth");
 const doctorRouter = require("./routes/doctorRoutes.js");
 const notFoundMiddleware = require("./middleware/not-found");
 const errorHandlerMiddleware = require("./middleware/error-handler");
-const patientRouter = require("./routes/patientRoutes.js");
 
+const patientRouter = require("./routes/patientRoutes.js");
+const appointmentRoutes = require("./routes/appointment.js");
 app.use(cors());
 app.use(express.json());
-
+app.use("/api/v1/appointments", appointmentRoutes);
 app.use(
   rateLimiter({
     windowMs: 15 * 60 * 1000, // 15 minutes
