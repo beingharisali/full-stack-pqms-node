@@ -1,19 +1,19 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 const PatientSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: [true, "Please provide name"],
-    maxlength: 100,
-  },
-  age: {
-    type: Number,
-    required: [true, "Age is required"],
-    maxlength: 100,
-  },
-  history: {
-    type: String,
-    required: [true, "Enter medical history"],
-  },
+	name: {
+		type: String,
+		required: [true, "Please provide name"],
+		maxlength: 100,
+	},
+	age: {
+		type: Number,
+		required: [true, "Age is required"],
+		maxlength: 100,
+	},
+	history: {
+		type: String,
+		required: [true, "Enter medical history"],
+	},
 });
 const Patient = mongoose.model("Patient", PatientSchema);
-export default Patient;
+module.exports = Patient;

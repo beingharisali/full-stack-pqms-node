@@ -1,13 +1,13 @@
-import express from "express";
+const express = require("express");
 const router = express.Router();
 
-import {
-  createPatient,
-  getAllPatients,
-  getPatient,
-  updatePatient,
-  deletePatient,
-} from "../controllers/patient.js";
+const {
+	createPatient,
+	getAllPatients,
+	getPatient,
+	updatePatient,
+	deletePatient,
+} = require("../controllers/patient.js");
 
 router.post("/", createPatient);
 
@@ -19,4 +19,4 @@ router.patch("/:id", updatePatient);
 
 router.delete("/:id", deletePatient);
 
-export default router;
+module.exports = router;
