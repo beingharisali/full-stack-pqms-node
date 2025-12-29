@@ -61,7 +61,7 @@ const rateLimiter = require("express-rate-limit");
 const connectDB = require("./db/connect");
 
 const authRouter = require("./routes/auth");
-const doctorRouter = require("./routes/doctorRoutes.js");
+const doctorRouter = require("./routes/docterRoutes.js");
 const notFoundMiddleware = require("./middleware/not-found");
 const errorHandlerMiddleware = require("./middleware/error-handler");
 

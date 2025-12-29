@@ -1,22 +1,22 @@
-import express from "express";
+const express = require("express");
 const router = express.Router();
 
-import {
-  createDoctor,
-  getAllDoctors,
-  getDoctor,
-  updateDoctor,
-  deleteDoctor,
-} from "../controllers/docter.js";
+const {
+	createDocter,
+	getAllDocters,
+	getDocter,
+	updateDocter,
+	deleteDocter,
+} = require("../controllers/docter.js");
 
-router.post("/", createDoctor);
+router.post("/", createDocter);
 
-router.get("/", getAllDoctors);
+router.get("/", getAllDocters);
 
-router.get("/:id", getDoctor);
+router.get("/:id", getDocter);
 
-router.patch("/:id", updateDoctor);
+router.patch("/:id", updateDocter);
 
-router.delete("/:id", deleteDoctor);
+router.delete("/:id", deleteDocter);
 
-export default router;
+module.exports = router;

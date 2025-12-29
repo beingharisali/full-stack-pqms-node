@@ -1,7 +1,7 @@
-import Docter from "../models/docter.js";
-import mongoose from "mongoose";
+const Docter = require("../models/docter.js");
+const mongoose = require("mongoose");
 
-export const createDocter = async (req, res) => {
+const createDocter = async (req, res) => {
   try {
     const { name, specialization, availability } = req.body;
 
@@ -23,7 +23,7 @@ export const createDocter = async (req, res) => {
   }
 };
 
-export const getAllDocters = async (req, res) => {
+const getAllDocters = async (req, res) => {
   try {
     const docters = await Docter.find({});
     res.status(200).json({
@@ -39,7 +39,7 @@ export const getAllDocters = async (req, res) => {
   }
 };
 
-export const getDocter = async (req, res) => {
+const getDocter = async (req, res) => {
   try {
     const { id } = req.params;
 
@@ -71,7 +71,7 @@ export const getDocter = async (req, res) => {
   }
 };
 
-export const updateDocter = async (req, res) => {
+const updateDocter = async (req, res) => {
   try {
     const { id } = req.params;
 
@@ -98,7 +98,7 @@ export const updateDocter = async (req, res) => {
   }
 };
 
-export const deleteDocter = async (req, res) => {
+const deleteDocter = async (req, res) => {
   try {
     const { id } = req.params;
 
@@ -121,4 +121,11 @@ export const deleteDocter = async (req, res) => {
       message: error.message,
     });
   }
+};
+module.exports = {
+  createDocter,
+  getAllDocters,
+  getDocter,
+  updateDocter,
+  deleteDocter,
 };

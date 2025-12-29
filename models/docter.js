@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 const docterSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -16,4 +16,4 @@ const docterSchema = new mongoose.Schema({
   },
 });
 const Docter = mongoose.model("Docter", docterSchema);
-export default Docter;
+module.exports = Docter;
