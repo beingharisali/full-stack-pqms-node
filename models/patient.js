@@ -8,7 +8,8 @@ const PatientSchema = new mongoose.Schema({
 	age: {
 		type: Number,
 		required: [true, "Age is required"],
-		maxlength: 100,
+		min: [0, "Age must be positive"],
+		max: [150, "Age must be realistic"],
 	},
 	history: {
 		type: String,
