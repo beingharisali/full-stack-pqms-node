@@ -25,7 +25,23 @@ const createDocter = async (req, res) => {
 
 const getAllDocters = async (req, res) => {
   try {
-    const docters = await Docter.find({});
+    const { availability, sort } = req.query;
+
+    let filter = {};
+
+    if (availability) {
+      filter.availability = availability;
+    }
+
+    let sortOption = {};
+
+    if (sort) {
+      sortOption[sort.replace("-", "")] = sort.startsWith("-") ? -1 : 1;
+    } else {
+      sortOption.createdAt = -1;
+    }
+
+    const docters = await Docter.find(filter).sort(sortOption);
     res.status(200).json({
       success: true,
       count: docters.length,
