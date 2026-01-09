@@ -2,21 +2,23 @@ const express = require("express");
 const router = express.Router();
 
 const {
-	createPatient,
-	getAllPatients,
-	getPatient,
-	updatePatient,
-	deletePatient,
+  createPatient,
+  getAllPatients,
+  getPatient,
+  updatePatient,
+  deletePatient,
 } = require("../controllers/patient.js");
+const auth = require("../middleware/authentication.js");
+const { authorizePermission } = require("../middleware/authorizePermission.js");
 
-router.post("/", createPatient);
+router.post("/", auth, authorizePermission("create"), createPatient);
 
-router.get("/", getAllPatients);
+router.get("/", auth, authorizePermission("read"), getAllPatients);
 
-router.get("/:id", getPatient);
+router.get("/:id", auth, authorizePermission("read"), getPatient);
 
-router.patch("/:id", updatePatient);
+router.patch("/:id", auth, authorizePermission("update"), updatePatient);
 
-router.delete("/:id", deletePatient);
+router.delete("/:id", auth, authorizePermission("delete"), deletePatient);
 
 module.exports = router;
